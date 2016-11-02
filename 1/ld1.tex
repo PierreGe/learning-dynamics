@@ -4,13 +4,14 @@
 % Head down to where it says "Start here"
 % --------------------------------------------------------------
  
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 \usepackage[utf8]{inputenc} 
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref} 
 \usepackage{amsmath,amsthm,amssymb}
+\usepackage[table]{xcolor}
  
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -34,6 +35,7 @@
 %                         Start here
 % --------------------------------------------------------------
  
+\setlength\parindent{0pt}
 %\renewcommand{\qedsymbol}{\filledbox}
  
 \title{Assignment 1: Game theory}%replace X with the appropriate number
@@ -50,7 +52,27 @@ Blablabla
 \begin{exercise}{2} Which social dilemma?
 \end{exercise}
 
-Blablabla
+For player A, each social dilemma has an equal probability of $\frac{1}{3}$ of being played. Player A does not know and which game will be play and has to choose a strategy in the set $\{C, D \}$ . 
+
+On the other hand, Player B knows in advance in which game he will be playing and had to choose a strategy in $\{C, D \}$ for every game, resulting in strategy in the set $\{ CCC, CDC, CCD, ... \} $
+
+Let's modelize this uncertain environment to find the best strategy for each player in response to the other one.
+
+\subsubsection{Player A}
+
+To find the best response of player A to a strategy of player B, let's find the payoff of player A for every strategy of Player B. For that we will give the details for some computation and a table for all the result. Like in the slides, red means best strategy.
+
+
+\subsubsection{Player B}
+
+To find the best response of player B to a strategy of player A, let's find the payoff of player B for every strategy of Player A.
+
+
+
+The response that will be best for Player B if A choose $C$ is ${CCD}$ and $DDC$ if player A choose $D$. 
+
+
+\textbf{When matching the result we find that there is two Nash equilibras :$(C - DCD)$ and $(D - DDC)$ }
 
 \begin{exercise}{3} Sequential truel
 \end{exercise}
@@ -64,4 +86,43 @@ Blablabla
 % --------------------------------------------------------------
  
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               
