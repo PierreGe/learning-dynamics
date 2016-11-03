@@ -51,51 +51,85 @@ INFO-F-409 - Learning dynamics} %if necessary, replace with your course title
    \includegraphics[width=\textwidth]{img/exo1.png}
 \end{figure}
 
-\paragraph{Pure strategy Nash Equilibria}
-
-Hawk strictly dominates Dove. And the NE is Hawk,Hawk  
 
 \paragraph{Mixed strategy Nash Equilibria}
 
-There are two obvious Pure Strategy Nash Equilibrum which are Dove,Hawk and Hawk,Dove.
+.
 
-Let's start by calculating the mixed strategy for Player 1. We know that the probability of scenario in which Player 1 win V is $0.5$ and the probability of losing is also $0.5$.
+To have mixed strategy, we have to assume that $\frac{V}{2}-\frac{D}{2}<0$ and that $\frac{V}{2}-T<0$. \\
 
-Let's define $p$ as the probability that Player 1 play Hawk.
+There are two obvious Pure Strategy Nash Equilibrium which are (Dove,Hawk) and (Hawk,Dove). \\
 
-So the Bernouilli payoff function of player 1 is :
+Let's start by calculating the mixed strategy for Player 1. We know that the probability of scenario in which Player 1 win V is $0.5$ and the probability of losing is also $0.5$.\\
 
-$E_2 (Hawk) = p (V/2-D/2) + (1-p) V$ and $E_2 (Dove) = p * 0 + (1-p)(V/2-T)$ .
+Let's define $p$ as the probability that Player 1 play Hawk.\\
 
-To solve the mixed strategy, let's resolve the following equation : 
+So the Bernouilli payoff function is for the utility of the second player :\\
 
-$E_2 (Hawk) = E_2 (Dove)$
+$U_2 (Hawk) = p (\frac{V}{2}-\frac{D}{2}) + (1-p) V$ 
 
-$p (V/2-D/2) + (1-p) V = p * 0 + (1-p)(V/2-T)$
+\vspace{2mm}
+$U_2 (Dove) = p * 0 + (1-p)(\frac{V}{2}-T)$.\\
 
-$ p = \frac{V+2T}{D-2T}$
+To solve the mixed strategy, let's resolve the following equation : \\
 
-So, both player play Hawk with probability of p and Dove with complementary probability. % todo define p
+$U_2 (Hawk) = U_2 (Dove)$
+
+\vspace{2mm}
+$p (\frac{V}{2}-\frac{D}{2}) + (1-p) V = p * 0 + (1-p)(\frac{V}{2}-T)$
+
+\vspace{2mm}
+$ p = \frac{V+2T}{D+2T}$ \\
+
+So, both player play Hawk with probability of $ p = \frac{V+2T}{D+2T}$ and Dove with complementary probability. \\
+
+Note that if the hypothesis above are not respected for V,D,T, we won't have a MSNE but only PSNE. For example if $V/2-D/2>0$, then players play (Hawk,Hawk) is equilibrium.
+
+\paragraph{Displaying} 
+
+.
+
+Displaying become more beneficial than escalating when :
+
+\vspace{2mm}
+$U_2 (Dove) > U_2 (Hawk)$
+
+\vspace{2mm}
+$p * 0 + (1-p)(\frac{V}{2}-T) > p (\frac{V}{2}-\frac{D}{2}) + (1-p) $
+
+\vspace{2mm}
+$p > \frac{V+2T}{D+2T} $
+
+
 
 \begin{exercise}{2} Which social dilemma?
 \end{exercise}
 
-For player A, each social dilemma has an equal probability of $\frac{1}{3}$ of being played. Player A does not know and which game will be play and has to choose a strategy in the set $\{C, D \}$ . 
+For player A, each social dilemma has an equal probability of $\frac{1}{3}$ of being played. Player A does not know and which game will be play and has to choose a strategy in the set $\{C, D \}$. \\
 
-On the other hand, Player B knows in advance in which game he will be playing and had to choose a strategy in $\{C, D \}$ for every game, resulting in a strategy in the set $\{ CCC, CDC, CCD, ... \} $
+On the other hand, Player B knows in advance in which game he will be playing and had to choose a strategy in $\{C, D \}$ for every game, resulting in a strategy in the set $\{ CCC, CDC, CCD, ... \}$. \\
 
 Let's modelize this uncertain environment to find the best strategy for each player in response to the other player.
 
 \paragraph{Player A}
 
-To find the best response of player A for a choice of player B, let's find the payoff of player A for every strategy of Player B. For that we will give the details for some computation and a table for all the result. Like in the slides, red means best strategy.
+To find the best response of player A for a choice of player B, let's find the payoff of player A for every strategy of Player B. \\
 
+$(C - CCC): \frac{1}{3}*2 + \frac{1}{3}*5 + \frac{1}{3}*2 = 3 $ \\
+
+$(D - CCC): \frac{1}{3}*5 + \frac{1}{3}*2 + \frac{1}{3}*5 = 4 $ \\
+
+$(C - DCC): \frac{1}{3}*0 + \frac{1}{3}*5 + \frac{1}{3}*2 = \frac{7}{3} $ \\
+
+$ ... $ \\
+
+When apply to every combination of strategy, this give us the following table.
 
 \begin{figure}[H]
    \includegraphics[width=\textwidth]{img/exo2-table1.png}
 \end{figure}
 
-Here, for example if Player B choose $CCC$, the best response for Player A would be to play $D$.
+Like in the slides, red means best strategy. So here, for example if Player B choose $CCC$, the best response for Player A would be to play $D$.
 
 
 \paragraph{Player B}
@@ -106,7 +140,7 @@ To find the best response of player B to a strategy of player A, let's find the 
    \includegraphics[width=\textwidth]{img/exo2-table2.png}
 \end{figure}
 
-The response that will be best for Player B if A choose $C$ is ${CCD}$ and $DDC$ if player A choose $D$. 
+The response that will be best for Player B if A choose $C$ is ${CCD}$ and $DDC$ if player A choose $D$. \\
 
 \textbf{When matching the colour in the two tables above we can find two NE :$(C - DCD)$ and $(D - DDC)$ }
 
@@ -118,18 +152,18 @@ The response that will be best for Player B if A choose $C$ is ${CCD}$ and $DDC$
    \includegraphics[width=\textwidth]{img/exo3.png}
 \end{figure}
 
-In the drawing above, we suppose that a survival give a reward of 1 and death give zero. So, for example, a result 0,0,1 means that only Player C survive.
+In the drawing above, we suppose that a survival give a reward of 1 and death give zero. So, for example, a result 0,0,1 means that only Player C survive. \\
 
-It is better for Player A 's chance of survival to shoot someone, because then if he succeed only one player will be able to fire a shot a him. The best target for him would obviously be to shot the best shooter.
+It is best for Player A 's chance of survival to shoot someone, because then if he succeed only one player will be able to fire a shot a him. The best target for him would obviously be to shot the best shooter.
 
 \begin{itemize}
 	\item If he chooses $B$, the expected payoff would be $Pa (1-Pc)$
 	\item If he chooses $C$, the expected payoff would be $Pa (1-Pb)$
 \end{itemize}
 
-Player will choose the one giving him the best payoff. Knowing that, we can say that it is better for B to have Pb smaller than Pc because Player A would rationally choose to shot C and he would increase his chance or survival. The same reasoning can be make for Player C, we can say that it is better for C to have Pc smaller than Pb because Player A would rationally choose to shot B and he would increase his chance or survival.
+Player will choose the one giving him the best payoff. Knowing that, we can say that it is better for B to have Pb smaller than Pc because Player A would rationally choose to shot C and he would increase his chance or survival. The same reasoning can be make for Player C, we can say that it is better for C to have Pc smaller than Pb because Player A would rationally choose to shot B and he would increase his chance or survival. So being a bad shooter \textit{(weakness)} increase a player chance of survival \textit{(is strength)}.
 
-%todo{sub-game}
+It is not possible to find the sub-game perfect equilibria of the game without knowing the order of $Pa, Pb, Pc$, in other words without knowing which one is bigger than other one. But as said above, Player A will shoot at Player B or Player C depending on which one has the biggest probability. If Player A misses or choose C, Player B will rationally always target Player C because Player A is not a thread anymore. And if at the end Player C is still alive, he does not have any preferences.
 
  
 
