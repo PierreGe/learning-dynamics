@@ -56,7 +56,7 @@ For this part, the selected game is the Prisoners Dilemna (T=10, R=7, P=0, S=0).
    \includegraphics[width=0.8\textwidth]{img/part1/cf-moore-notmyself.png}
 \end{figure}
 
-In the plot above, we can see the frequency of cooperation (i.e. the fraction of player cooperating). We can see that starting at $0.5$, it first decrease before stabilizing at around $0.82$.
+In the plot above, we can see the frequency of cooperation (i.e. the fraction of player cooperating). We can see that starting at $0.5$, it first decrease before stabilizing at around $0.84$.
 
 \subsubsection{Same in every run ?}
 
@@ -65,7 +65,7 @@ In the plot above, we can see the frequency of cooperation (i.e. the fraction of
    \includegraphics[width=0.8\textwidth]{img/part1/cf-moore-notmyself-90-10.png}
 \end{figure}
 
-Answering the question \textit{approximately the same} is quite hard because it's subjective. Above, it is plotted the $0.1$ and $0.9$ quantile. From this plot, one could reasonably say that it is in fact "approximately the same". Note that the $0.1$ and $0.9$ quantile has been chosen because the minimum would be at $0$ and the maximum at $1$.
+Answering the question \textit{is it approximately the same} is quite hard because it can be subjective. Above, it is plotted the $0.1$ and $0.9$ quantile. From this plot, one could reasonably say that it is in fact "approximately the same". Note that the $0.1$ and $0.9$ quantile has been chosen because the minimum would be at $0$ and the maximum at $1$.
 
 \subsection{Visualization}
 
@@ -145,6 +145,8 @@ In the visualization below, red is cooperation and blue is defection. We can see
 
 \subsubsection{Explanation}
 
+One possible explanation for this outcome is that the smaller is the lattice, the less probable it is to find cluster of cooperation (small zone of cooperation that can get bigger) in the lattice, thus resulting in a smaller cooperation level. Moreover, for example, in a lattice of 4x4, a neighbourhood of 9 equals more than half of the lattice, making it harder to cooperate instead of cheating (more individual). Indeed, the reason for one to cooperate is that is neighbour is cooperating and that the neighbour's neighbour is cooperating and so on.
+
 \subsection{Von Neumann}
 
 \subsubsection{Plot}
@@ -163,7 +165,7 @@ $Pij = \frac{1 + [W_j-W_i]/[4*(max\{P,R,T,S\} - min\{P,R,T,S\})]}{2}$
 
 This probability makes sense to be defined like that because it indicate the incentive a player has to change is strategy. In other words, the more it can gain by changing his strategy, the more probable he is to change his strategy and will also give him flexibility. 
 
-Indeed, $[W_j-W_i]$ is the payoff difference between the player and his neighbour while $ [4*(max\{P,R,T,S\} - min\{P,R,T,S\})]$ is the maximum possible payoff between the two. The interesting part of the fraction is $[W_j-W_i]/[4*(max\{P,R,T,S\} - min\{P,R,T,S\})]$. It will be equals to 0 if the payoff of the player and his neighbour are equal, negative if the payoff of the player is greater than its neighbour and positive if the payoff of the player is less than its neighbour.
+Indeed, $[W_j-W_i]$ is the payoff difference between the player and his neighbours while $ [N*(max\{P,R,T,S\} - min\{P,R,T,S\})]$ is the maximum possible payoff between player and its neighbours. The interesting part of the fraction is $[W_j-W_i]/[4*(max\{P,R,T,S\} - min\{P,R,T,S\})]$. It will be equals to 0 if the payoff of the player and his neighbour are equal, negative if the payoff of the player is greater than its neighbour and positive if the payoff of the player is less than its neighbour.
 
 In brief, the probability of switching strategy is closer to 0 if it cost player, $\frac{1}{2}$ if it does not change the outcome for player and close to $1$ if player can win more. It also give player flexibility by allowing him to change to a worse outcome strategy, in order to maybe gain more in the end.
 
@@ -243,6 +245,10 @@ In the visualization below, red is cooperation and blue is defection. More visua
    \includegraphics[width=0.6\textwidth]{img/part2/part2-moore-visu-300.png}
 \end{figure}
 
+\subsubsection{Comment}
+
+For the visualisation on this part, we can see that no cluster are appearing like in part 1 of this assignment.
+
 \subsection{Lattice size}
 
 \subsubsection{4x4}
@@ -250,6 +256,7 @@ In the visualization below, red is cooperation and blue is defection. More visua
 \begin{figure}[H]
    \includegraphics[width=0.7\textwidth]{img/part2/part2-moore-4-4.png}
 \end{figure}
+The stationary state seems to be near $0.08$. Here the lattice is very small, It could be wise to not put importance in this result.
 
 \subsubsection{8x8}
 
@@ -257,6 +264,8 @@ In the visualization below, red is cooperation and blue is defection. More visua
 \centering
    \includegraphics[width=0.7\textwidth]{img/part2/part2-moore-8-8.png}
 \end{figure}
+The stationary state seems to be near $0.32$. Here it is hard to find a stationary value seems there is a lot of little variation even for 100 iterations.
+
 
 \subsubsection{12x12}
 
@@ -264,6 +273,7 @@ In the visualization below, red is cooperation and blue is defection. More visua
 \centering
    \includegraphics[width=0.7\textwidth]{img/part2/part2-moore-12-12.png}
 \end{figure}
+The stationary state seems to be near $0.38$. 
 
 \subsubsection{20x20}
 
@@ -272,18 +282,92 @@ In the visualization below, red is cooperation and blue is defection. More visua
    \includegraphics[width=0.7\textwidth]{img/part2/part2-moore-20-20.png}
 \end{figure}
 
+The stationary state seems to be near $0.38$. 
+
 \subsubsection{Explanation}
 
+%TODO%
 
 \subsection{Von Neumann}
 
 \begin{figure}[H]
 \centering
-   \includegraphics[width=0.8\textwidth]{img/part2/part2-vonn-notmyself800.png}
+   \includegraphics[width=0.8\textwidth]{img/part2/part2-vonn-notmyself.png}
 \end{figure}
 
+The level of cooperation does not seem to change with Van Neuman neighbourhood yielding approximately the same value but in this case it seems to converge faster.
 
 \section{Part 3 : Bonus}
+
+For this project, it was asked of us to explore more parameters than those described in the exercise requirement.
+I though that it would be relevant to explore if : 
+\begin{itemize}
+	\item The initial frequency of cooperation has an influence on the result.
+	\item The lattice boundary has an influence on the result.
+\end{itemize}
+
+\subsection{Initial frequency of cooperation}
+
+Here we consider that the lattice has an initial frequency of cooperation of $x$ and we use part1 as player strategy on a matrix of $50x50$.
+
+
+\subsubsection{Initial Fc 0.9}
+
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.8\textwidth]{img/part3/bonus-01-D.png}
+\end{figure}
+
+\subsubsection{Initial Fc 0.8}
+
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.8\textwidth]{img/part3/bonus-02-D.png}
+\end{figure}
+
+\subsubsection{Initial Fc 0.2}
+
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.8\textwidth]{img/part3/bonus-08-D.png}
+\end{figure}
+
+\subsubsection{Initial Fc 0.1}
+
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.8\textwidth]{img/part3/bonus-09-D.png}
+\end{figure}
+
+\subsubsection{Explanation}
+
+Without surprise, the initial frequency of cooperation has an effect on the stationary frequency of cooperation. Indeed the less the matrix has cooperation, the lesser the chance of one player to cooperate with it's neighbor and the lesser the chance of formation of cluster as seen in part 1.
+
+\subsubsection{Explanation}
+
+
+\subsection{Lattice boundary}
+
+Here we consider that the lattice has boundary and we use part1 as player strategy on a matrix of $50x50$.
+
+\subsubsection{Moore}
+
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.8\textwidth]{img/part3/moore-bounded.png}
+\end{figure}
+
+\subsubsection{Von Neumann}
+
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.8\textwidth]{img/part3/von-neuman-bouded.png}
+\end{figure}
+
+\subsubsection{Explanation}
+
+The bound does not seem to have an influence or a negligible one on the stationary frequency of cooperation.
+
 
 \end{document}
 
