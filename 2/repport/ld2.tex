@@ -56,7 +56,7 @@ For this part, the selected game is the Prisoners Dilemna (T=10, R=7, P=0, S=0).
    \includegraphics[width=0.8\textwidth]{img/part1/cf-moore-notmyself.png}
 \end{figure}
 
-In the plot above, we can see the frequency of cooperation (i.e. the fraction of player cooperating). We can see that starting at $0.5$, it first decrease before stabilizing at around $0.84$.
+In the plot above, we can see the frequency of cooperation (i.e. the fraction of player cooperating). We can see that starting at $0.5$, it first goes down before going up again and stabilizing at around $0.84$.
 
 \subsubsection{Same in every run ?}
 
@@ -145,7 +145,7 @@ In the visualization below, red is cooperation and blue is defection. We can see
 
 \subsubsection{Explanation}
 
-One possible explanation for this outcome is that the smaller is the lattice, the less probable it is to find cluster of cooperation (small zone of cooperation that can get bigger) in the lattice, thus resulting in a smaller cooperation level. Moreover, for example, in a lattice of 4x4, a neighbourhood of 9 equals more than half of the lattice, making it harder to cooperate instead of cheating (more individual). Indeed, the reason for one to cooperate is that is neighbour is cooperating and that the neighbour's neighbour is cooperating and so on.
+One possible explanation for this outcome is that the smaller is the lattice, the less probable it is to find clusters of cooperation (small zone of cooperation that can get bigger) in the lattice, thus resulting in a smaller cooperation level because cluster reduce exploitation by defectors. Moreover, for example, in a lattice of 4x4, a neighbourhood of 9 equals more than half of the lattice, making it harder to cooperate instead of cheating (more individual). Indeed, the reason for one to cooperate is that is neighbour is cooperating and that the neighbour's neighbour is cooperating and so on.
 
 \subsection{Von Neumann}
 
@@ -157,17 +157,19 @@ One possible explanation for this outcome is that the smaller is the lattice, th
 
 \subsubsection{Explanation}
  
+A possible explanation for the lower score than with Moore neighbourhood is that the spatial structure are less dense than with moore resulting in an higher incentive to deceive. 
+ 
 \section{Part 2}
 
 \subsection{Probability defined}
 
-$Pij = \frac{1 + [W_j-W_i]/[4*(max\{P,R,T,S\} - min\{P,R,T,S\})]}{2}$ 
+$Pij = \frac{1 + [W_j-W_i]/[N*(max\{P,R,T,S\} - min\{P,R,T,S\})]}{2}$ 
 
 This probability makes sense to be defined like that because it indicate the incentive a player has to change is strategy. In other words, the more it can gain by changing his strategy, the more probable he is to change his strategy and will also give him flexibility. 
 
-Indeed, $[W_j-W_i]$ is the payoff difference between the player and his neighbours while $ [N*(max\{P,R,T,S\} - min\{P,R,T,S\})]$ is the maximum possible payoff between player and its neighbours. The interesting part of the fraction is $[W_j-W_i]/[4*(max\{P,R,T,S\} - min\{P,R,T,S\})]$. It will be equals to 0 if the payoff of the player and his neighbour are equal, negative if the payoff of the player is greater than its neighbour and positive if the payoff of the player is less than its neighbour.
+Indeed, $[W_j-W_i]$ is the payoff difference between the player and his neighbours while $ [N*(max\{P,R,T,S\} - min\{P,R,T,S\})]$ is the maximum possible payoff between player and its neighbours. The interesting part of the fraction is $[W_j-W_i]/[N*(max\{P,R,T,S\} - min\{P,R,T,S\})]$ : it will be equals to 0 if the payoff of the player and his neighbour are equal, negative if the payoff of the player is greater than its neighbour and positive if the payoff of the player is less than its neighbour. The $N$ is there because $[W_j-W_i]$ is proportional to the number of neighbor. 
 
-In brief, the probability of switching strategy is closer to 0 if it cost player, $\frac{1}{2}$ if it does not change the outcome for player and close to $1$ if player can win more. It also give player flexibility by allowing him to change to a worse outcome strategy, in order to maybe gain more in the end.
+In brief, the probability of switching strategy is closer to 0 if it cost player, $\frac{1}{2}$ if it does not change the outcome for player and close to $1$ if player can win more. It also give player flexibility by allowing him to change to a worse outcome strategy, in order to maybe gain more in the end. The cooperation can be maintained in particular if player is using this probability only with one neighbor
 
 \subsection{Cooperation level}
 
@@ -178,12 +180,16 @@ In brief, the probability of switching strategy is closer to 0 if it cost player
    \includegraphics[width=\textwidth]{img/part2/part2-moore-notmyself.png}
 \end{figure}
 
+We can see that starting at $0.5$, slowly going to around a stationary state of $0.39$.
+
 \subsubsection{Same in every run ?}
 
 \begin{figure}[H]
 \centering
    \includegraphics[width=\textwidth]{img/part2/part2-moore-notmyself-std.png}
 \end{figure}
+
+As above, answering the question \textit{is it approximately the same} is quite hard because it can be subjective. Above, it is plotted the $0.1$ and $0.9$ quantile. From this plot, one could reasonably say that it is in fact "approximately the same". Note that the $0.1$ and $0.9$ quantile has been chosen because the minimum would be at $0$ and the maximum at $1$.
 
 \subsection{Visualization}
 
@@ -247,7 +253,7 @@ In the visualization below, red is cooperation and blue is defection. More visua
 
 \subsubsection{Comment}
 
-For the visualisation on this part, we can see that no cluster are appearing like in part 1 of this assignment.
+For the visualisation on this part, we can see that no spatial structure like above are appearing like in part 1 of this assignment. The strategy here is more individual. According to the paper, it is due to small interaction neighborhood in the population (looking like filaments). It is because here it is advantageous to adopt a strategy that is opposite to the neighbour. In the paper, this is call a dendritic paper.
 
 \subsection{Lattice size}
 
@@ -286,7 +292,7 @@ The stationary state seems to be near $0.38$.
 
 \subsubsection{Explanation}
 
-%TODO%
+Except for very small lattice, the level of cooperation seems to be the same. It matches the result above in the matrix visualisation where one could see the result to be individual.
 
 \subsection{Von Neumann}
 
@@ -295,7 +301,7 @@ The stationary state seems to be near $0.38$.
    \includegraphics[width=0.8\textwidth]{img/part2/part2-vonn-notmyself.png}
 \end{figure}
 
-The level of cooperation does not seem to change with Van Neuman neighbourhood yielding approximately the same value but in this case it seems to converge faster.
+The level of cooperation seem to change with Van Neuman neighbourhood yielding approximately half of the value and converging in about the same time. According to the paper it is because cooperators tends to play an opposite strategy to its neighbor thus generating structure more advantageous to defector.
 
 \section{Part 3 : Bonus}
 
@@ -304,11 +310,12 @@ I though that it would be relevant to explore if :
 \begin{itemize}
 	\item The initial frequency of cooperation has an influence on the result.
 	\item The lattice boundary has an influence on the result.
+	\item The player playing with himself influence on the result.
 \end{itemize}
 
 \subsection{Initial frequency of cooperation}
 
-Here we consider that the lattice has an initial frequency of cooperation of $x$ and we use part1 as player strategy on a matrix of $50x50$.
+Here we consider that the lattice has an initial frequency of cooperation of $Fc$ and we use the prisoner dilemma on a matrix of $50x50$.
 
 
 \subsubsection{Initial Fc 0.9}
@@ -341,14 +348,12 @@ Here we consider that the lattice has an initial frequency of cooperation of $x$
 
 \subsubsection{Explanation}
 
-Without surprise, the initial frequency of cooperation has an effect on the stationary frequency of cooperation. Indeed the less the matrix has cooperation, the lesser the chance of one player to cooperate with it's neighbor and the lesser the chance of formation of cluster as seen in part 1.
-
-\subsubsection{Explanation}
+Without surprise, the initial frequency of cooperation has an effect on the stationary frequency of cooperation. Indeed the less the matrix has cooperation, the lesser the chance of one player to cooperate with it's neighbour and the lesser the chance of formation of clusters as seen in part 1.
 
 
 \subsection{Lattice boundary}
 
-Here we consider that the lattice has boundary and we use part1 as player strategy on a matrix of $50x50$.
+Here we consider that the lattice has boundary and we use the prisoner dilemma on a matrix of $50x50$ with a Moore neighborhood.
 
 \subsubsection{Moore}
 
@@ -368,6 +373,21 @@ Here we consider that the lattice has boundary and we use part1 as player strate
 
 The bound does not seem to have an influence or a negligible one on the stationary frequency of cooperation.
 
+\subsection{Player playing with himself}
+
+Here we consider that the player plays also with himself and we use the prisoner dilemma on a matrix of $50x50$ with a Van Neumann neighborhood.
+
+
+\subsubsection{Von Neumann}
+
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.8\textwidth]{img/part1/cf-vonn-myselfincluded.png}
+\end{figure}
+
+\subsubsection{Explanation}
+
+With a little bit of counterintuition here, when the player plays with himself. One explanation could be that for example if a defector is around only cooperator : if he does not play with himself he will cooperate but if he plays with himself he will continue to defect.
 
 \end{document}
 
