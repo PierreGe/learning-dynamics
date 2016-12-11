@@ -12,6 +12,19 @@
 \usepackage{hyperref} 
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage[table]{xcolor}
+\usepackage{biblatex}
+\begin{filecontents*}{\jobname.bib}
+@book{bestref,
+  title={The dynamics of reinforcement learning in cooperative multiagent systems},
+  author={Claus, Caroline and Boutilier, Craig},
+  journal={AAAI/IAAI},
+  number={s 746},
+  pages={752},
+  year={1998}
+}
+\end{filecontents*}
+ 
+\addbibresource{\jobname.bib} 
  
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -45,10 +58,19 @@ INFO-F-409 - Learning dynamics} %if necessary, replace with your course title
 \maketitle
 
 \section{N-Armed Bandit}
+Like in the slide \textit{Multi-Agent Reinforcement Learning} graph, all graph have been averaged over 2000 iterations.
+
 
 \subsection{Exercice 1}
 
 \subsubsection{Average reward for each algorithm}
+
+Two interpretation of this graph were possible:
+\begin{itemize}
+	\item the average overall reward for this algorithm, including the training. In other word for the play $t$, an average from $0$ to $t$.
+	\item the average reward for this algorithm at a precise moment. In other word, what is the reward at $t$.
+\end{itemize}
+The first one has been chosen because it take into account all "early failure".
 
 \begin{figure}[H]
    \centering
@@ -114,8 +136,9 @@ INFO-F-409 - Learning dynamics} %if necessary, replace with your course title
 
 \subsubsection{Results}
 
-\subsection{Exercice 2}
 
+
+\subsection{Exercice 2}
 
 \subsubsection{Average reward for each algorithm}
 
@@ -234,6 +257,53 @@ INFO-F-409 - Learning dynamics} %if necessary, replace with your course title
 
 
 \section{Stochastic Reward Game}
+
+
+\subsection{Plot}
+
+\subsubsection{Std=0.2}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.7\textwidth]{img/2/1.png}
+\end{figure}
+
+\subsubsection{Std=0.1 and std0=4}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.7\textwidth]{img/2/2.png}
+\end{figure}
+
+\subsubsection{Std=0.1 and std1=4}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.7\textwidth]{img/2/3.png}
+\end{figure}
+
+\subsubsection{Discussion}
+
+The temperature for the first type with simple Boltzmann action selection has been arbitrarily set to 0.1 because it has been tested that it yield the same result as 1, 0.5 and 0.05.
+
+According to \cite{bestref} and what we can see from the early stage on the graph, the two players begin by playing the non nash equilibrium strategy $<3,3>$.Then when the exploration continues, the two player will find the more attractive but still not equilibrium $<3,2>$. Finally, when exploration continus, the two player will find the non-optimal equilibrum strategy $<2,2>$ and remains there forever. There a not willing to go to a strategy where the loss would be huge $(-30)$ and thus will never reach the optimal equilirbrium $<1,1>$
+
+The heuristic is what \cite{bestref} called \textit{Combined}. It's a combined result of the boltzmann above with a proportion of the MaxQ factor to bias exploration toward actions that have potential to yield higher reward ($11$ in our case).
+
+By looking at the plot, the heuristic seems to be the best action to choose if one want to reach the optimal equilibrium even if the variance is high for this equilibrium.
+
+
+\subsection{Discussion}
+
+\subsubsection{JAL vs IL}
+
+% How will the learning process change if we make the agents independent learners?
+
+\subsubsection{Always select the action that yield the highest reward}
+
+% How will the learning process change if we make the agents always select the action that according to them will yield the highest reward (assuming the other agent plays the best response)?
+
+\printbibliography
 
 \end{document}
 
